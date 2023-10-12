@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="ar_icon.ico" />
+
+    <title>AR Molecule Viewer</title>
+
+    <!--<link rel="stylesheet" href="style.css" />-->
+
+      <script src="/script.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/3Dmol/1.8.0/3Dmol-min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/3Dmol/1.8.0/3Dmol.js"></script>
+
+  </head>
+
+
+<body>
+        <h1 class="title">AR Molecule Viewer</h1>
+		Open a marker image on your computer, or print this marker image out. On your phone, open the "Augmented Reality Viewer" and point the camera at the marker.
+		        It may take a few seconds for the model to load.
+        <br>
+        <br>
+		<button>
+		<a href="enter_ar.html" style="text-decoration:none" >Augmented Reality Viewer </a>
+		</button>
+
+		<button>
+		<a href="enter_ar_user_interact.html" style="text-decoration:none" >Augmented Reality Viewer (User click/rotation)  </a>
+		</button>
+        <br>
+        <br>
+
+        <!--View models in browser instead:<br>
+        <button>
+		<a href="browser_view.html" style="text-decoration:none" >3DMol Viewer </a>
+		</button>
+		-->
+
+      <br>
+<table>
+    <tr>
+        <td><a href="hemoglobin_marker.html" style="text-decoration:none" >Hemoglobin Marker </a>
+
+        </td>
+        <td>
+       <!--       <div style="height: 200px; width: 200px; position: relative;" class='viewer_3Dmoljs' data-href='hemoglobin_model.pdb'
+      data-select1='chain:A' data-style1='cartoon:color=spectrum' data-select2='resn:HEM' data-style2='stick'
+      data-select3='resn:OXY' data-style3='sphere'></div> -->
+            <div class="viewer_container">
+
+
+ <div id="hemoglobin_reaction" class="mol_container" style="max-height: 25vh; max-width: 30vw; height: 300px; width: 400px; position: relative;">
+     <canvas id="undefined" style="max-height: 25vh; max-width: 30vw; height: 300px; width: 400px; position: relative;" ></canvas>
+     </div>
+    </div>
+     <script>
+
+	$(document).ready(function(){
+		$.get("hemoglobin_model.pdb", function(data) {
+
+			wid = $3Dmol.createViewer("hemoglobin_reaction");
+
+			set = {
+				interval: 30,
+				animation: 'backAndForth',
+			}
+			wid.addModelsAsFrames(data, "pdb");
+			wid.setBackgroundColor(0xF6F6F6);
+			wid.setStyle({chain:'A'},{cartoon:{color:'spectrum'}});
+			wid.setStyle({resi:['42','58','64','87','104']},{stick:{colorscheme:"cyanCarbon"}})
+			wid.setStyle({resn:'HEM'},{stick:{}})
+			wid.setStyle({resn:'OXY'},{sphere: {scale: 0.7}})
+			wid.setStyle({elem:'Fe'},{sphere: {scale: 0.7}})
+			wid.zoomTo();
+			wid.render();
+			wid.animate({'loop': set['animation'], 'interval': set['interval']});
+
+		});
+	});
+     </script>
+
+
+        </td>
+        <td>Oxygenation of hemoglobin</td>
+        </tr>
+
+    <tr>
+
+        <td><a href="ion_channel.html" style="text-decoration:none" >Ion channel </a></td>
+        <td>
+ <div class="viewer_container">
+ <div id="ion_channel" class="mol_container" style="max-height: 25vh; max-width: 30vw; height: 300px; width: 400px; position: relative;">
+     <canvas id="undefined1" style="max-height: 25vh; max-width: 30vw; height: 300px; width: 400px; position: relative;" ></canvas>
+     </div>
+    </div>
+     <script>
+
+	$(document).ready(function(){
+		$.get("1k4c.pdb", function(data) {
+
+			wid = $3Dmol.createViewer("ion_channel");
+
+			set = {
+				interval: 30,
+				animation: 'backAndForth',
+			}
+			wid.addModelsAsFrames(data, "pdb");
+			wid.setBackgroundColor(0xF6F6F6);
+			wid.setStyle({chain:'A'},{cartoon:{color:'pink'}});
+			wid.setStyle({chain:'B'},{cartoon:{color:'cyan'}});
+			wid.setStyle({chain:'C'},{cartoon:{color:'white'}});
+			wid.setStyle({chain:'D'},{cartoon:{color:'blue'}});
+			wid.setStyle({resi:['75']},{stick:{colorscheme:"cyanCarbon"},cartoon:{color:'cyan'}})
+			wid.setStyle({resi:['76']},{stick:{colorscheme:"cyanCarbon"},cartoon:{color:'cyan'}})
+			wid.setStyle({resi:['77']},{stick:{colorscheme:"cyanCarbon"},cartoon:{color:'cyan'}})
+			wid.setStyle({resi:['78']},{stick:{colorscheme:"cyanCarbon"},cartoon:{color:'cyan'}})
+			wid.setStyle({elem:'K'},{sphere: {scale: 0.7}})
+			wid.zoomTo();
+			wid.rotate(180,'y',1);
+			wid.rotate(270,'x',1);
+			wid.render();
+
+		});
+	});
+     </script>
+
+        </td>
+                <td>
+        Ion channel, KcsA
+        </td>
+        </tr>
+
+            <tr>
+                <td>
+                    <a href="ligand_binder.html" style="text-decoration:none" >Protein-ligand complex </a>
+
+                </td>
+        <td>
+ <div class="viewer_container">
+ <div id="protein_binder" class="mol_container" style="max-height: 25vh; max-width: 30vw; height: 300px; width: 400px; position: relative;">
+     <canvas id="undefined3" style="max-height: 25vh; max-width: 30vw; height: 300px; width: 400px; position: relative;" ></canvas>
+     </div>
+    </div>
+     <script>
+
+	$(document).ready(function(){
+		$.get("6w63.pdb", function(data) {
+
+			wid = $3Dmol.createViewer("protein_binder");
+
+			set = {
+				interval: 30,
+				animation: 'backAndForth',
+			}
+			wid.addModelsAsFrames(data, "pdb");
+			wid.setBackgroundColor(0xF6F6F6);
+			wid.setStyle({},{cartoon:{color:'cyan'}});
+			wid.setStyle({resi:['8-101']},{cartoon:{color:'blue'}});
+			wid.setStyle({resi:['102-184']},{cartoon:{color:'red'}});
+			wid.setStyle({resi:['201-306']},{cartoon:{color:'white'}});
+			wid.setStyle({resi:['401']},{stick:{colorscheme:"yellowCarbon"}})
+			wid.setStyle({resi:['166']},{stick:{colorscheme:"greenCarbon"},cartoon:{color:'red'}})
+			wid.setStyle({resi:['143']},{stick:{colorscheme:"greenCarbon"},cartoon:{color:'red'}})
+			wid.setStyle({resi:['1']},{stick:{colorscheme:"cyanCarbon"},cartoon:{color:'cyan'}})
+			wid.setStyle({resi:['305']},{stick:{colorscheme:"whiteCarbon"},cartoon:{color:'cyan'}})
+			wid.zoomTo();
+			wid.render();
+
+		});
+	});
+     </script>
+        </td>
+                <td>Protein binding with a small molecule</td>
+    </tr>
+
+
+
+    <tr>
+
+        <td><a href="horse.html" style="text-decoration:none" >Horse Marker </a></td>
+        <td>
+
+        </td>
+                <td>
+        Model of a horse
+        </td>
+        </tr>
+
+
+
+
+ </table>
+
+</body>
+
+</html>
