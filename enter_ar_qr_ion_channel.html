@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+    <script src="1.4.2_aframe.min.js"></script>
+    <script src="aframe-ar.js"></script>
+    <script src="7.1.0_aframe-extras.min.js"></script>
+    <script src="gesture-detector.js" defer></script>
+    <script src="gesture-handler.js" defer></script>
+
+    <body style="margin : 0px; overflow: hidden;">
+<a-scene
+        arjs="trackingMethod: best; sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 4x4_BCH_13_9_3;"
+        embedded
+        renderer="logarithmicDepthBuffer: true;"
+        vr-mode-ui="enabled: false"
+        gesture-detector
+        id="scene"
+        >
+
+        <a-marker type="barcode" value="2" smooth="true"
+    smoothCount="10"
+    smoothTolerance=".05"
+    smoothThreshold="5"
+    raycaster="objects: .clickable"
+    emitevents="true"
+    cursor="fuse: false; rayOrigin: mouse;">
+            <a-entity gltf-model="ion_channel_compressed.glb" position="0 0 0" rotation="0 0 0" scale="0.6 0.6 0.6"
+                      class="clickable" gesture-handler="minScale: 0.25; maxScale: 10" ></a-entity>
+        </a-marker>
+
+    <a-entity camera></a-entity>
+
+        </a-scene>
+    </body>
+</html>
