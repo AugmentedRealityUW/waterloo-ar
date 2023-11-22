@@ -41,7 +41,7 @@
       <br>
 <table>
     <tr>
-        <td><a href="hemoglobin_marker.html" style="text-decoration:none" >Hemoglobin Marker </a>
+        <td><a href="/AR_Image_Recognition/hemoglobin_marker.html" style="text-decoration:none" >Hemoglobin Marker </a>
 
         </td>
         <td>
@@ -88,7 +88,7 @@
 
     <tr>
 
-        <td><a href="ion_channel.html" style="text-decoration:none" >Ion channel </a></td>
+        <td><a href="/AR_Image_Recognition/ion_channel.html" style="text-decoration:none" >Ion channel </a></td>
         <td>
  <div class="viewer_container">
  <div id="ion_channel" class="mol_container" style="max-height: 25vh; max-width: 30vw; height: 300px; width: 400px; position: relative;">
@@ -98,7 +98,7 @@
      <script>
 
 	$(document).ready(function(){
-		$.get("1k4c.pdb", function(data) {
+		$.get("ion_channel.pdb", function(data) {
 
 			wid = $3Dmol.createViewer("ion_channel");
 
@@ -134,7 +134,7 @@
 
             <tr>
                 <td>
-                    <a href="ligand_binder.html" style="text-decoration:none" >Protein-ligand complex </a>
+                    <a href="/AR_Image_Recognition/ligand_binder.html" style="text-decoration:none" >Protein-ligand complex </a>
 
                 </td>
         <td>
@@ -146,7 +146,7 @@
      <script>
 
 	$(document).ready(function(){
-		$.get("6w63.pdb", function(data) {
+		$.get("ligand_binder.pdb", function(data) {
 
 			wid = $3Dmol.createViewer("protein_binder");
 
@@ -174,21 +174,6 @@
         </td>
                 <td>Protein binding with a small molecule</td>
     </tr>
-
-
-
-    <tr>
-
-        <td><a href="horse.html" style="text-decoration:none" >Horse Marker </a></td>
-        <td>
-
-        </td>
-                <td>
-        Model of a horse
-        </td>
-        </tr>
-
-
 
 
  </table>
